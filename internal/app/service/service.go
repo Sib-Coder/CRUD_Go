@@ -11,6 +11,7 @@ type Database interface {
 	UpdateUser(user model.User) (string, error)
 	ExtractUsers() ([]model.User, error)
 }
+
 type Service struct {
 	//database1 *db.Database
 	db Database
@@ -38,7 +39,7 @@ func (s *Service) Takeusers() ([]model.User, error) {
 	return users, nil
 }
 
-func (s *Service) AddUser(u model.User) (string, error) {
+func (s *Service) Adduser(u model.User) (string, error) {
 	user, err := s.db.AddUser(u)
 	if err != nil {
 		return " ", err
