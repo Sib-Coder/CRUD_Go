@@ -1,7 +1,7 @@
 package db
 
 import (
-	"CRUD_Go/internal/model"
+	"CRUD_Go/internal/app/model"
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
@@ -106,7 +106,7 @@ func (db *Database) UpdateUser(user model.User) (string, error) {
 	var count_users int
 
 	res, err := db.db.Query("SELECT COUNT(id) FROM employees WHERE name = $1 AND lastname = $2 AND surname = $3;", user.Name, user.LastName, user.SurName)
-	fmt.Println(res)
+	//fmt.Println(res)
 	if err != nil {
 		return "", err
 	}
@@ -118,7 +118,7 @@ func (db *Database) UpdateUser(user model.User) (string, error) {
 		}
 	}
 	if count_users != 0 {
-		_, err := db.db.Exec("UPDATE employees set  surname =$2, gender = $3 ,status =$4 WHERE id = $1 ;", count_users, user.SurName, user.Gender, user.Status)
+		_, err := db.db.Exec("UPDATE employees set  surname =$3, gender = $4 ,status =$5 WHERE name =$1 AND lastname =$2 ;", user.Name, user.LastName, user.SurName, user.Gender, user.Status)
 		if err != nil {
 			return "", err
 		} else {
@@ -126,6 +126,6 @@ func (db *Database) UpdateUser(user model.User) (string, error) {
 		}
 		return "", err
 	}
-	return "", err
+	return user.Name, err
 
 }
