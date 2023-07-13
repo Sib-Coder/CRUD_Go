@@ -11,6 +11,3 @@ EXPOSE 8090
 # Запустим приложение
 CMD ["./crudApp"]
 
-#команды для сборки и запуска
-#docker build -t testgo1 .
-#docker run -p 8090:8090 --name testgo1 testgo1

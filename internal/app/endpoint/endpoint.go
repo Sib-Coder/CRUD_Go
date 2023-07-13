@@ -27,7 +27,7 @@ func New(s Service) *Endpoint {
 }
 
 func (e *Endpoint) Hello(ctx echo.Context) error {
-	s := fmt.Sprintf("Приветствую в моём приложении\n В нём есть такие методы \n ")
+	s := fmt.Sprintf("Приветствую в моём приложении\n В нём есть такие методы \n GET,POST,PUT,DELETE - /user\n Для получения всех users потправьте GET /users\n Все запросы оправляются в JSON ")
 	err := ctx.String(http.StatusOK, s)
 	if err != nil {
 		return errors.New("Error CTX Server")
