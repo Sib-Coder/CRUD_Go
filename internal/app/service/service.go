@@ -13,7 +13,6 @@ type Database interface {
 }
 
 type Service struct {
-	//database1 *db.Database
 	db Database
 }
 

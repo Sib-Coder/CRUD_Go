@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"log"
+	"os"
 )
 
 type App struct {
@@ -19,8 +20,9 @@ type App struct {
 
 func New() (*App, error) {
 	app := &App{}
-	//TODO завернуть параметры подключения в env
-	dsn := ""
+
+	dsn := os.Getenv("DSN")
+
 	//инициализации всех параметров через New
 	app.database, _ = db.New(dsn)
 	app.service = service.New(app.database)
