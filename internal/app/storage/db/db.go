@@ -23,7 +23,7 @@ func New(dsn string) (*Database, error) {
 	}, nil
 }
 
-// получение пользователя из бд по имени
+
 func (db *Database) ExtractUser(name string) (model.User, error) {
 	var user model.User
 	res, err := db.db.Query("SELECT name,lastname, surname, status, gender  FROM employees WHERE name=$1;", name)
@@ -67,7 +67,7 @@ func (db *Database) AddUser(user model.User) (string, error) {
 
 }
 
-// удаление пользователя на основе его статуса и имени и фамилии- готова
+
 // TODO продумать больше нормальных параметров для удаления
 func (db *Database) DeleteUser(user model.User) (string, error) {
 	_, err := db.db.Exec("DELETE FROM employees WHERE name = $1 and status = $2 and lastname =$3", user.Name, user.Status, user.LastName)
@@ -98,7 +98,7 @@ func (db *Database) ExtractUsers() ([]model.User, error) {
 
 }
 
-// TODO подумать над обновлением и его параметрами - НЕ ГОТОВА
+
 func (db *Database) UpdateUser(user model.User) (string, error) {
 	var count_users int
 
