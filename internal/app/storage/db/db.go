@@ -12,9 +12,6 @@ type Database struct {
 }
 
 func New(dsn string) (*Database, error) {
-	//dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", cfg.Db.Host, cfg.Db.Port, cfg.Db.Username)
-	//"host='10.10.0.136' port=5432 user=postgres password=postgres dbname=postgres sslmode=disable"
-
 	db, err := sqlx.Open("postgres", dsn)
 	if err != nil {
 		fmt.Println("DataBase NOT WORK")
