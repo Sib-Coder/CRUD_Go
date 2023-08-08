@@ -1,7 +1,7 @@
 package main
 
 import (
-	"CRUD_Go/internal/pkg/app"
+	"CRUD_Go/internal/app"
 	"errors"
 	"log"
 )
